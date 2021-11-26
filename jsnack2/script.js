@@ -19,55 +19,40 @@ form.append(inputText,submit);
 //attendo click per registrare nome e controllare il dato inserito
 //per la stampa creo elemento prima
 const result = document.createElement('span');
-let find = false;
-console.log(find);
 submit.addEventListener('click',function() {
-    // situazione in cui: utente trovato, stiamo cercando un altro utente.
-    if(find) {
-        result.innerHTML = '';
-        find=false;
-    }
+    result.innerHTML = '';
     // ottengo nome e trasformo in minuscolo per controllo
     const name = inputText.value.toLowerCase();
     //Imposteremo una variabile FIND a false, settata a true indicherá che abbiamo trovato il nome
     // CICLO FOR: finche non scorriamo tutta la lista o/e troviamo il nome
-    // for(let i=0;i<invited.length && !find;i++) {
-    //     //controllo variabile con elemento i-esimo della lista e se i nomi corrispondono setto variabile FIND a true.
-    //     if (name == invited[i].toLowerCase()) {
-    //         find=true; //finisce ciclo
-    //     }
-    // }
-    // CICLO WHILE
-    let i = 0;
-    while (i < invited.length && !find) {
+    let findFor = false;
+    for(let i=0;i<invited.length && !findFor;i++) {
         //controllo variabile con elemento i-esimo della lista e se i nomi corrispondono setto variabile FIND a true.
         if (name == invited[i].toLowerCase()) {
-            find=true; //finisce ciclo
+            findFor=true; //finisce ciclo
+        }
+    }
+    // CICLO WHILE
+    let findWhile = false;
+    let i = 0;
+    while (i < invited.length && !findWhile) {
+        //controllo variabile con elemento i-esimo della lista e se i nomi corrispondono setto variabile FIND a true.
+        if (name == invited[i].toLowerCase()) {
+            findWhile=true; //finisce ciclo
         }
         i += 1;
     }
-
-    // stampo esito in base a variabile FIND: se true entra, altrimenti no
-    if(find) {
-        result.innerHTML='<br>Nome trovato. Puoi entrare.';
+    // stampo esito in base a variabile FIND per il ciclo for: se true entra, altrimenti no
+    if(findFor) {
+        result.innerHTML+='<br>Nome trovato con ciclo for. Puoi entrare.';
     } else {
-        result.innerHTML+='<br>Nome NON trovato. Riprova.';
+        result.innerHTML +='<br>Nome NON trovato con ciclo for. Riprova.';
+    }
+    // stampo esito in base a variabile FIND per il ciclo while: se true entra, altrimenti no
+    if(findWhile) {
+        result.innerHTML +='<br>Nome trovato con ciclo while. Puoi entrare.';
+    } else {
+        result.innerHTML +='<br>Nome NON trovato con ciclo while. Riprova.';
     }
 });
 form.append(result);
-
-// //---- BONUS -----
-// //l'aggiunta dei click sui bottoni andrá fatta post, per evitare inutili complicazioni
-// // CICLO FOR
-// const buttonFor = document.querySelector('.btn-for');
-// // console.log(buttonFor);
-// buttonFor.addEventListener('click',function(){
-//     //con un ciclo for controllo se il nome é presente oppure no nella lista e comunico l'esito
-// });
-
-// // CICLO WHILE
-// const buttonWhile = document.querySelector('.btn-while');
-// // console.log(buttonWhile);
-// buttonWhile.addEventListener('click', function (){
-//     //con un ciclo while controllo se il nome é presente oppure no nella lista e comunico l'esito
-// });
