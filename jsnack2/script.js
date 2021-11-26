@@ -19,11 +19,17 @@ form.append(inputText,submit);
 //attendo click per registrare nome e controllare il dato inserito
 //per la stampa creo elemento prima
 const result = document.createElement('span');
+let find = false;
+console.log(find);
 submit.addEventListener('click',function() {
+    // situazione in cui: utente trovato, stiamo cercando un altro utente.
+    if(find) {
+        result.innerHTML = '';
+        find=false;
+    }
     // ottengo nome e trasformo in minuscolo per controllo
     const name = inputText.value.toLowerCase();
     //Imposteremo una variabile FIND a false, settata a true indicherá che abbiamo trovato il nome
-    let find = false;
     // CICLO FOR: finche non scorriamo tutta la lista o/e troviamo il nome
     // for(let i=0;i<invited.length && !find;i++) {
     //     //controllo variabile con elemento i-esimo della lista e se i nomi corrispondono setto variabile FIND a true.
