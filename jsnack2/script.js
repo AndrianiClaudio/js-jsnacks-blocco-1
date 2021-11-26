@@ -22,28 +22,25 @@ const result = document.createElement('span');
 submit.addEventListener('click',function() {
     // ottengo nome e trasformo in minuscolo per controllo
     const name = inputText.value.toLowerCase();
-    // name='claudio'; //TEST!!
-    // name='clauio'; //TEST!!
     //Imposteremo una variabile FIND a false, settata a true indicherá che abbiamo trovato il nome
     let find = false;
     // CICLO FOR: finche non scorriamo tutta la lista o/e troviamo il nome
-    /*
-    i<invited.length - find==true
-        vero - vero: devo uscire e stampare risultato POSITIVO
-        vero - falso: devo continuare a scorrere elementi della lista
-        falso - vero: devo uscire e stampare risultato NEGATIVO(!)
-    i<invited.length - find==false
-        vero - vero: devo continuare a scorrere elementi della lista
-        vero - falso: devo uscire e stampare risultato POSITIVO
-        falso - vero: devo uscire e stampare risultato NEGATIVO(!)
-        ...questo é il comportamento dell'operatore logico AND
-    */
-    for(let i=0;i<invited.length && !find;i++) {
-        //controllo variabile con elemento i-esimo della lista.
-        if (name == invited[i].toLowerCase()) {//se i nomi corrispondono setto variabile FIND a true
+    // for(let i=0;i<invited.length && !find;i++) {
+    //     //controllo variabile con elemento i-esimo della lista e se i nomi corrispondono setto variabile FIND a true.
+    //     if (name == invited[i].toLowerCase()) {
+    //         find=true; //finisce ciclo
+    //     }
+    // }
+    // CICLO WHILE
+    let i = 0;
+    while (i < invited.length && !find) {
+        //controllo variabile con elemento i-esimo della lista e se i nomi corrispondono setto variabile FIND a true.
+        if (name == invited[i].toLowerCase()) {
             find=true; //finisce ciclo
         }
+        i += 1;
     }
+
     // stampo esito in base a variabile FIND: se true entra, altrimenti no
     if(find) {
         result.innerHTML='<br>Nome trovato. Puoi entrare.';
