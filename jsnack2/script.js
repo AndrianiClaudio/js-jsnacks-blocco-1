@@ -2,15 +2,32 @@
 //Array invitati
 const invited = ['Claudio','Giuseppe','Francesca','Chiara','Elisabetta', 'Thomas','Gianfranco','Mario'];
 const container = document.querySelector('.container');
-//Avró bisogno di una input text dove inseriró il nome dell'utente
-//Il valore della input text andrá salvato in una variabile
+//creo un form
+const form = document.createElement('form');
+container.append(form);
+//INPUTTEXT: dove inseriró il nome dell'utente
+const inputText = document.createElement('input');
+inputText.type = 'text';
+inputText.placeholder = "Inserisci il nome dell'utente";
+inputText.size = inputText.placeholder.length;
+//SUBMIT: bottone per invio dei dati
+const submit = document.createElement('button');
+submit.type='submit';
+submit.innerHTML = 'Comunica nome';
+//inserisco input e bottone appena creati nel mio form
+form.append(inputText,submit);
+//attendo click per registrare nome e controllare il dato inserito
+submit.addEventListener('click',function() {
+    console.log(inputText.value);
+});
+
 //Imposteremo una variabile FIND a false, settata a true indicherá che abbiamo trovato il nome
 const find = false;
 //CICLO FOR 
-for(let i=0;/*finche non scorriamo tutta la lista o/e troviamo il nome*/;i++) {
-    //controllo variabile con elemento i-esimo della lista.
-    //se i nomi corrispondono setto variabile FIND a true
-}
+// for(let i=0;/*finche non scorriamo tutta la lista o/e troviamo il nome*/;i++) {
+//     //controllo variabile con elemento i-esimo della lista.
+//     //se i nomi corrispondono setto variabile FIND a true
+// }
 //stampo esito in base a variabile FIND: se true entra, altrimenti no
 
 // //---- BONUS -----
